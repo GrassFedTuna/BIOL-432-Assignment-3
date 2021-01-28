@@ -24,7 +24,9 @@ library(dplyr)
 
 Loading data
 ```{r}
-dat <- read.csv("C:/Users/camer/OneDrive/Desktop/BIOL 432/Assignment 3/InputData/FallopiaData.csv")
+setwd("C:/Users/camer/OneDrive/Desktop/BIOL 432/Assignment 3")
+
+dat <- read.csv("./InputData/FallopiaData.csv")
 ```
 
 
@@ -63,9 +65,17 @@ Counting the number of observations in Taxon column
 my_function(x = dat$Taxon, calculation = "Observations")
 ```
 
+Calculating average biomass of two nutrient concentrations
+```{r}
+dat %>%
+  group_by(Nutrients) %>%
+  summarize(Average_Biomass_g = my_function(x = TotalG, calculation = 'Average'))
+```
 
-
-
+Writing the wrangled data as a .csv file
+```{r}
+write.csv(dat, file = "./Output/WrangledData.csv")
+```
 
 
 
