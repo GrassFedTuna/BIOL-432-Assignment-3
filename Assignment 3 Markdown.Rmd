@@ -1,0 +1,72 @@
+
+---
+title: "BIOL_432_Assignment_3"
+author: "Cameron MacPhail"
+date: "28/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Project Info
+
+Date: 28/01/2021
+
+GitHub repository:
+
+Loading packages:
+```{r}
+library(dplyr)
+```
+
+
+Loading data
+```{r}
+dat <- read.csv("C:/Users/camer/OneDrive/Desktop/BIOL 432/Assignment 3/InputData/FallopiaData.csv")
+```
+
+
+Managing data
+```{r}
+dat <- dat %>%
+  filter(Total < 60) %>% #Including only rows w/ less than 60 in the Total column
+  mutate(TotalG = Total / 1000) %>% #Creating a total biomass variable in grams
+  select(TotalG, Taxon, Scenario, Nutrients) #Selecting only the variables I want
+```
+
+
+Creating a function
+```{r}
+my_function <- function(x, calculation) {
+  
+  
+  if (calculation == 'Average') {
+    print(mean(x))
+  } else { if (calculation == 'Sum') {
+    print(sum(x))
+  } else { if(calculation == 'Observations') {
+    print(length(x))
+  } else { print("Error: improper calculation")}
+    
+  }
+    
+  }
+  
+}
+```
+
+
+Counting the number of observations in Taxon column
+```{r}
+my_function(x = dat$Taxon, calculation = "Observations")
+```
+
+
+
+
+
+
+
+
