@@ -10,13 +10,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##Project Info
+
+## Project Info
 
 Date: 28/01/2021
 
-GitHub repository:
+GitHub repository: https://github.com/GrassFedTuna/BIOL-432-Assignment-3
 
-Loading packages:
+Loading packages
 ```{r}
 library(dplyr)
 ```
@@ -39,7 +40,7 @@ dat <- dat %>%
 ```
 
 
-Creating a function
+Creating a function that can take the mean or sum of a vector, or count its number of observations
 ```{r}
 my_function <- function(x, calculation) {
   
