@@ -9,4 +9,29 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Loading dplyr
+```{r}
+library(dplyr)
+```
+Importing measurements.csv file
+```{r}
+MData <- read.csv("./measurements.csv")
+```
+
+
+Creating new species column
+```{r}
+MData <- MData %>%
+  mutate(Organism = sub("(\\w)\\w+", "\\1.", MData$Organism))
+```
+
+
+Note: Instead of doing a second dplyr command to make a new dataset including the new variable and excluding the old variable, I simply named the new variable the same name as the old variable to overwrite it
+
+Exporting dataset to project folder
+```{r}
+write.csv(MData, file = "./MeasShort.csv")
+```
+
+
 
